@@ -5,6 +5,10 @@ if (CMAKE_COMPILER_IS_GNUCC)
    add_definitions (-D_GNU_SOURCE)
 endif ()
 
+if (NOT DEFINED LIBRARY_TYPE)
+set(LIBRARY_TYPE SHARED)
+endif (NOT DEFINED LIBRARY_TYPE)
+
 set (HEADERS
    vcos_platform.h
    vcos_platform_types.h
@@ -33,13 +37,8 @@ set (SOURCES
    ../generic/vcos_generic_blockpool.c
 )
 
-if (VCOS_PTHREADS_BUILD_SHARED)
-   add_library (vcos SHARED ${SOURCES})
-   target_link_libraries (vcos pthread dl rt)
-else ()
-   add_library (vcos ${SOURCES})
-   target_link_libraries (vcos pthread rt)
-endif ()
+add_library (vcos ${LIBRARY_TYPE} ${SOURCES})
+target_link_libraries (vcos pthread dl rt)
 
 
 #install(FILES ${HEADERS} DESTINATION include)

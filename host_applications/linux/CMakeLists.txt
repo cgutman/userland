@@ -1,5 +1,9 @@
 # linux apps
 
+if (NOT DEFINED LIBRARY_TYPE)
+set(LIBRARY_TYPE SHARED)
+endif (NOT DEFINED LIBRARY_TYPE)
+
 add_subdirectory(libs/bcm_host)
 add_subdirectory(apps/gencmd)
 add_subdirectory(apps/tvservice)

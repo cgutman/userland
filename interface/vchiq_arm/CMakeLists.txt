@@ -1,5 +1,9 @@
+if (NOT DEFINED LIBRARY_TYPE)
+set(LIBRARY_TYPE SHARED)
+endif (NOT DEFINED LIBRARY_TYPE)
 
-add_library(vchiq_arm SHARED
+
+add_library(vchiq_arm ${LIBRARY_TYPE}
             vchiq_lib.c vchiq_util.c)
 
 # pull in VCHI cond variable emulation

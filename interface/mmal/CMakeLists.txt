@@ -5,7 +5,7 @@ endif (NOT DEFINED LIBRARY_TYPE)
 
 add_definitions(-Wall -Werror)
 
-add_library(mmal SHARED util/mmal_util.c)
+add_library(mmal ${LIBRARY_TYPE} util/mmal_util.c)
 
 add_subdirectory(core)
 add_subdirectory(util)
